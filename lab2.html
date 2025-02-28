@@ -1,37 +1,112 @@
-<p>
-    <span style="font-size:24px;"><span style="font-family:comic sans ms,cursive;">Student Information
-            From</span></span>
-</p>
-<p>
-    <span style="font-size:16px;"><span style="font-family:comic sans ms,cursive;">Student ID&nbsp; &nbsp;
-            &nbsp;&nbsp;<input maxlength="13" name="studentID" type="text" value="D10000000" /></span></span>
-</p>
-<p>
-    <span style="font-size:16px;"><span style="font-family:comic sans ms,cursive;">Name&nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp;<input maxlength="50" name="Name" type="text" value="e.g." /></span></span>
-</p>
-<p>
-    <font face="comic sans ms, cursive"><span style="font-size: 16px;">Gendar&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp;&nbsp;</span></font><input name="gendar" type="radio" value="male" /><span
-        style="font-size: 16px; font-family: &quot;comic sans ms&quot;, cursive;">Male</span><input name="gendar"
-        type="radio" value="famale" /><span
-        style="font-size: 16px; font-family: &quot;comic sans ms&quot;, cursive;">Famale</span>
-</p>
-<p>
-    <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">Habits&nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp;<input name="Swimming" type="checkbox" value="1" />Swimming</span></span>
-    <font face="comic sans ms, cursive"><span style="font-size: 16px;">&nbsp;</span></font><input name="Football"
-        type="checkbox" value="1" /><span style="font-size: 16px;"><span
-            style="font-family:comic sans ms,cursive;">Football</span></span>&nbsp;<input name="Butter" type="checkbox"
-        value="1" /><span style="font-family: &quot;comic sans ms&quot;, cursive;"><span
-            style="font-size:16px;">Butter</span></span>
-</p>
-<p>
-    <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">Major&nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp;<select name="major" size="1">
-                <option value="cs">computer science</option>
-                <option value="eng">english</option>
-                <option value="math">math</option>
-                <option value="Phy">Physice</option>
-            </select></span></span>
-</p>
+<html lang="en">
+
+
+<body>
+    <div>
+        &nbsp;</div>
+    <table align="center" border="0" cellpadding="1" cellspacing="1" style="width:90%;">
+        <tbody>
+            <tr>
+                <td>
+                    <span style="font-size:24px;"><span
+                            style="font-family:comic sans ms,cursive;">Student&nbsp;Information&nbsp;From</span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-size:16px;"><span style="font-family:comic sans ms,cursive;">Student
+                            ID</span></span>
+                </td>
+                <td>
+                    <input maxlength="13" name="studentID" type="text" value="D10000000" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-size:16px;"><span style="font-family:comic sans ms,cursive;">Name</span></span>
+                </td>
+                <td>
+                    <input maxlength="50" name="Name" type="text" value="e.g. John Wick" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <font face="comic sans ms, cursive"><span style="font-size: 16px;">Gendar</span></font>
+                </td>
+                <td>
+                    <input name="gendar" type="radio" value="male" /><span
+                        style="font-size: 16px; font-family: &quot;comic sans ms&quot;, cursive;">Male</span><input
+                        name="gendar" type="radio" value="famale" /><span
+                        style="font-size: 16px; font-family: &quot;comic sans ms&quot;, cursive;">Famale</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">Habits</span></span>
+                </td>
+                <td>
+                    <input name="Swimming" type="checkbox" value="1" /><span style="font-size:16px;"><span
+                            style="font-family:comic sans ms,cursive;">Swimming</span></span>
+                    <font face="comic sans ms, cursive"><span style="font-size: 16px;">&nbsp;</span></font><input
+                        name="Football" type="checkbox" value="1" /><span style="font-size: 16px;"><span
+                            style="font-family:comic sans ms,cursive;">Football</span></span>&nbsp;<input
+                        name="Computer" type="checkbox" value="1" /><span
+                        style="font-family: &quot;comic sans ms&quot;, cursive;"><span
+                            style="font-size:16px;">Computer</span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">Major
+                </td>
+                <td>
+                    <select name="major" size="1">
+                        <option value="cs">computer science</option>
+                        <option value="eng">english</option>
+                        <option value="math">math</option>
+                        <option value="Phy">Physice</option>
+                    </select></span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">City
+                </td>
+                <td>
+                    <label for="citylist"></label>
+                    <input type="text" id="fruit" name="city" list="cities">
+                    <datalist id="cities">
+                        <option value="宁波">
+                        <option value="杭州">
+                        <option value="上海">
+                        <option value="南京">
+                        <option value="苏州">
+                    </datalist>
+                    <input type="submit" value="提交">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">suggestion
+                </td>
+                <td>
+                    <textarea cols="6" style="width: 243px; height: 66px;"></textarea></span></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input name="submite" type="button" value="submite" />
+                </td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">&nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></span>
+    </p>
+</body>
+
+</html>
