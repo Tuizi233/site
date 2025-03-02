@@ -1,0 +1,104 @@
+<div>
+    &nbsp;</div>
+<table align="center" border="0" cellpadding="1" cellspacing="1" style="width:90%;">
+    <tbody>
+        <tr>
+            <td>
+                <span style="font-size:24px;"><span style="font-family:comic sans ms,cursive;">用户注册</span></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <font face="comic sans ms, cursive"><span style="font-size: 16px;">用户名称</span></font>
+            </td>
+            <td>
+                <input maxlength="13" name="studentID" type="text" value="zhangsan" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <font face="comic sans ms, cursive"><span style="font-size: 16px;">用户密码</span></font>
+            </td>
+            <td>
+                <input maxlength="50" name="Name" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <font face="comic sans ms, cursive"><span style="font-size: 16px;">用户性别</span></font>
+            </td>
+            <td>
+                <input name="gendar" type="radio" value="male" /> <span
+                    style="font-size: 16px; font-family: &quot;comic sans ms&quot;, cursive;">男</span><input
+                    name="gendar" type="radio" value="famale" /> <span
+                    style="font-size: 16px; font-family: &quot;comic sans ms&quot;, cursive;">女</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">爱好</span></span>
+            </td>
+            <td>
+                <input name="Swimming" type="checkbox" value="1" /> <span style="font-size:16px;"><span
+                        style="font-family:comic sans ms,cursive;">游泳</span></span>&nbsp; <font
+                    face="comic sans ms, cursive"><span style="font-size: 16px;">&nbsp;</span></font><input
+                    name="Football" type="checkbox" value="1" />
+                <font face="comic sans ms, cursive"><span style="font-size: 16px;">篮球</span></font>&nbsp; <input
+                    name="Computer" type="checkbox" value="1" /> <span
+                    style="font-family: &quot;comic sans ms&quot;, cursive;"><span style="font-size:16px;">LOL&nbsp;
+                        <input name="王者荣耀" type="checkbox" value="王者荣耀" />王者荣耀&nbsp; <input name="韩剧" type="checkbox"
+                            value="韩剧" />韩剧 </span></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">邮箱</span></span>
+            </td>
+            <td>
+                <input name="Email" type="text" value="请输入您的邮箱" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <font face="comic sans ms, cursive"><span style="font-size: 16px;">用户头像</span></font>
+            </td>
+            <td>
+                <div class="upload-container">
+                    <form action="/upload" enctype="multipart/form-data" method="post">
+                        <input accept=".pdf,.doc,.docx,.jpg,.png" name="file" required="" type="file" /><br />
+                        <input type="submit" value="提交文件" />&nbsp;
+                    </form>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-family: &quot;comic sans ms&quot;, cursive; font-size: 16px;">您的家庭住址是</span>
+            </td>
+            <td>
+                <label for="citylist"></label>
+                <input type="text" id="fruit" name="city" list="cities">
+                <datalist id="cities">
+                    <option value="宁波">
+                    <option value="杭州">
+                    <option value="上海">
+                    <option value="南京">
+                    <option value="苏州">
+                </datalist>
+                <input type="submit" value="提交">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-family: &quot;comic sans ms&quot;, cursive; font-size: 16px;">您的意见或建议</span>
+            </td>
+            <td>
+                <textarea cols="6" name="意见" style="width: 245px; height: 31px;"></textarea>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family:comic sans ms,cursive;"><span style="font-size:16px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></span>
+</p>
