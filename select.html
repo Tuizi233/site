@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器示例</title>
+    <style>
+        /* 元素选择器 */
+        h1 {
+            color: blue;
+        }
+
+        /* 类选择器 */
+        .text {
+            font-size: 16px;
+        }
+
+        /* ID 选择器 */
+        #header {
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* 属性选择器 */
+        input[type="text"] {
+            border: 1px solid #ccc;
+        }
+
+        /* 伪类选择器 */
+        a:hover {
+            color: orange;
+        }
+
+        /* 伪元素选择器 */
+        p::before {
+            content: "→ ";
+        }
+
+        /* 后代选择器 */
+        div p {
+            color: green;
+        }
+
+        /* 子元素选择器 */
+        div>span {
+            font-weight: bold;
+        }
+
+        /* 相邻兄弟选择器 */
+        h1+p {
+            font-size: 20px;
+        }
+
+        /* 通用选择器 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>标题</h1>
+        <p>这是一个段落。</p>
+        <span>这是一个 span。</span>
+    </div>
+    <div>
+        <p class="text">这是另一个段落。</p>
+    </div>
+    <input type="text" placeholder="输入文本">
+    <a href="#">这是一个链接</a>
+</body>
+
+</html>
