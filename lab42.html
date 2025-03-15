@@ -5,6 +5,38 @@
     <meta charset="UTF-8">
     <title>个人简历</title>
     <style>
+                body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .gradient-ellipse {
+            width: 300px;
+            /* 椭圆的宽度 */
+            height: 200px;
+            /* 椭圆的高度 */
+            border-radius: 50%;
+            /* 使元素呈现为椭圆形 */
+            background-color: red;
+            /* 背景颜色 */
+            animation-duration: 3s;
+            /* 动画持续时间 */
+            animation-name: gradientAnimation;
+            /* 动画名称 */
+            animation-iteration-count: infinite;
+            /* 动画播放次数 */
+            animation-timing-function: linear;
+            /* 动画时间函数 */
+        }
+
+        @keyframes gradientAnimation {
+            from{background-color: red;}
+            to{background-color: yellow;}
+        }
         .resume-grid {
             width: 800px;
             margin: 0 auto;
@@ -38,6 +70,7 @@
 </head>
 
 <body>
+    <div class="gradient-ellipse"></div>
     <div class="resume-grid">
         <!-- 标题 -->
         <div class="grid-item title">个人简历</div>
