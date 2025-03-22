@@ -1,0 +1,43 @@
+<html>
+
+<body>
+    <style>
+        @keyframes fly{
+            from{
+                top:400px;
+            }
+            to{
+                top:0px;
+            }
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+    <script>
+        function createCircle(cl) {
+            let b = document.createElement("div");
+            b.className = "circle";
+            b.id = "b1";
+            b.style.cssText = "position:absolute;left:20px;top:400px;animation:fly 10s linear infinite";
+            b.style.backgroundColor = cl;
+            b.style.left = Math.floor(Math.random() * 2000) + "px";
+            document.body.appendChild(b);
+        }
+        createCircle("red");
+        createCircle("blue");
+        createCircle("green");
+        createCircle("yellow");
+        createCircle("pink");
+        createCircle("purple");
+        createCircle("orange");
+        createCircle("brown");
+        createCircle("black");
+        createCircle("gray");
+    </script>
+</body>
+
+</html>
