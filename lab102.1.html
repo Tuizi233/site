@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Balloon Animation</title>
+    <style>
+        @keyframes fly {
+            from {
+                top: 100vh;
+                transform: scale(1);
+            }
+
+            to {
+                top: 0px;
+                transform: scale(2);
+            }
+        }
+
+        @keyframes burst {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function Balloon(color1, diameter, speed, id) {
+            this.color = color1;
+            this.diameter = diameter;
+            this.speed = speed;
+            this.id = id;
+
+            this.make = function () {
+                let dv = document.createElement("div");
+                dv.id = 'b' + this.id;
+                let randomLeft = Math.random() * (window.innerWidth - this.diameter);
+                dv.style.cssText = "width: " + this.diameter + "px; height: " + this.diameter + "px; border-radius: " + (this.diameter / 2) + "px; background-color: " + this.color + "; position: absolute; left: " + randomLeft + "px; top: 100vh; text-align: center; line-height: " + this.diameter + "px; color: white;";
+                dv.innerHTML = '';
+                document.body.appendChild(dv);
+            };
+
+            this.rise = function () {
+                let dv = document.getElementById('b' + this.id);
+                dv.style.animationName = "fly";
+                dv.style.animationDuration = ~~(700 / this.speed) + 's';
+
+                let burstTime = (~~(700 / this.speed) * 1000) * 0.8;
+                setTimeout(() => {
+                    dv.style.animationName = "burst";
+                    dv.style.animationDuration = '0.5s';
+                    setTimeout(() => {
+                        dv.remove();
+                    }, 500);
+                }, burstTime);
+            };
+        }
+
+        const colors = ['red', 'orange', 'yellow', 'green', 'black', 'blue', 'purple'];
+        for (let i = 0; i < 100; i++) {
+            let randomColorIndex = Math.floor(Math.random() * colors.length);
+            let r = colors[randomColorIndex];
+            let s = Math.random() * 200;
+            let w = Math.random() * 200 + 30;
+            let b = new Balloon(r, w, s, i);
+            b.make();
+            b.rise();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+// 1. 语法比较（字面量 vs. 构造函数）
+// (1) 创建对象字面量 book1
+const book1 = {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+    describe() {
+        return `${this.title} by ${this.author}, published in ${this.year}.`;
+}
+};
+
+// (2) 创建构造函数 Book 并实例化 book2
+function Book(title, author, year) {
+this.title = title;
+this.author = author;
+this.year = year;
+this.describe = function() {
+return `${this.title} by ${this.author}, published in ${this.year}.`;
+};
+}
+const book2 = new Book("To Kill a Mockingbird", "Harper Lee", 1960);
+
+// 问题解答
+// - 定义 describe() 的语法区别：在字面量中，方法直接作为对象的属性，使用函数简写语法；在构造函数中，使用 this 关键字将方法赋值给实例。
+// - 字面量使用逗号是因为它是对象属性的分隔符；构造函数使用分号是因为它是 JavaScript 语句的结束符。
+
+// 2. 原型 vs. 实例方法
+// (1) 向 Book 构造函数的原型添加 isRecent() 方法
+Book.prototype.isRecent = function() {
+return this.year > 2010;
+};
+
+// (2) 在构造函数内部定义 isRecent() 方法
+function BookWithInstanceMethod(title, author, year) {
+this.title = title;
+this.author = author;
+this.year = year;
+this.isRecent = function() {
+return this.year > 2010;
+};
+}
+
+// 问题解答
+// - 如果创建 100 个 Book 对象，将方法添加到原型更节省内存。因为原型方法被所有实例共享，只在内存中存在一份；而实例方法会为每个实例单独创建一份。
+
+// 3. Object.create 用于原型继承
+// (1) 使用 Object.create() 让 book3 继承自 book1
+const book3 = Object.create(book1);
+book3.title = "1984";
+book3.author = "George Orwell";
+book3.year = 1949;
+
+// (2) 修改 book3 的 year 并调用 describe()
+book3.year = 2020;
+console.log(book3.describe());
+
+// 问题解答
+// - Object.create() 直接创建一个新对象，该对象继承自指定的原型对象；new Book() 是通过构造函数创建一个新对象，该对象的原型是构造函数的 prototype 属性。
+// - 如果 book1 的 describe() 方法稍后被更改，book3 会反映这些更改，因为 book3 继承自 book1。
+
+// 4. OOP 比较（字面量 vs. 构造函数 + 原型）
+// 字面量方式
+const car1 = {
+brand: "Toyota",
+speed: 0,
+accelerate: function() {
+this.speed += 10;
+}
+};
+
+// 构造函数 + 原型方式
+function Car(brand) {
+this.brand = brand;
+this.speed = 0;
+}
+Car.prototype.accelerate = function() {
+this.speed += 10;
+};
+const car2 = new Car("Honda");
+
+// 问题解答
+// - 构造函数 + 原型方式更适合创建多个相似的对象，因为它可以通过原型共享方法，节省内存。
+// - car1.accelerate() 直接在 car1 对象上查找 accelerate 方法；car2.accelerate() 首先在 car2 对象上查找，如果找不到，则在 Car.prototype 上查找。
+
+// 5. 权衡分析
+// (1) 内存使用
+// - 将方法添加到原型更节省内存，因为所有实例共享同一个原型方法，只在内存中存在一份；而在构造函数内部定义的方法会为每个实例单独创建一份。
+
+// (2) 灵活性
+// - 两种方法都可以动态添加/删除属性。
+// 字面量方式
+car1.color = "Red";
+delete car1.speed;
+console.log(car1);
+
+// 构造函数 + 原型方式
+car2.model = "Civic";
+delete car2.speed;
+console.log(car2);
