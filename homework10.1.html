@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right Time Check</title>
+</head>
+
+<body>
+    <h1>Right Time Check</h1>
+    <p>You can use the righttime function to check if a given date-time is within the provided time slots.</p>
+
+    <script>
+        function righttime(d, timeslots) {
+            const daysMap = {
+                'M': 1, 'T': 2, 'W': 3, 'R': 4, 'F': 5, 'S': 6, 'U': 0
+            };
+            const timeSlotsArr = timeslots.split(',').map(slot => slot.trim());
+            const dayOfWeek = d.getDay();
+            const time = d.getHours() * 60 + d.getMinutes();
+
+            for (let slot of timeSlotsArr) {
+                let [dayPart, timePart] = slot.split(/(\d{1,2}:?\d{0,2}-\d{1,2}:?\d{0,2})/).filter(part => part);
+                let days = dayPart.replace(/\s/g, '');
+                let [startTimeStr, endTimeStr] = timePart.split('-').map(t => t.trim());
+
+                let [startHours, startMinutes] = startTimeStr.split(':').map(Number);
+                let [endHours, endMinutes] = endTimeStr.split(':').map(Number);
+
+                if (isNaN(startMinutes)) {
+                    startMinutes = 0;
+                }
+                if (isNaN(endMinutes)) {
+                    endMinutes = 0;
+                }
+
+                const startTime = startHours * 60 + startMinutes;
+                const endTime = endHours * 60 + endMinutes;
+
+                for (let i = 0; i < days.length; i++) {
+                    if (daysMap[days[i]] === dayOfWeek && time >= startTime && time < endTime) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        // 测试用例
+        function runTests() {
+            // 测试用例 1: 日期时间在时间槽内
+            let testDate1 = new Date(2025, 3, 29, 10, 30); // 2025年4月29日周二10:30
+            let testTimeSlots1 = "T 10:00-11:15";
+            let result1 = righttime(testDate1, testTimeSlots1);
+            console.log(`Test Case 1: Expected true, Got ${result1}`);
+
+            // 测试用例 2: 日期时间不在时间槽内
+            let testDate2 = new Date(2025, 3, 29, 12, 0); // 2025年4月29日周二12:00
+            let testTimeSlots2 = "T 10:00-11:15";
+            let result2 = righttime(testDate2, testTimeSlots2);
+            console.log(`Test Case 2: Expected false, Got ${result2}`);
+
+            // 测试用例 3: 多个时间槽
+            let testDate3 = new Date(2025, 3, 26, 14, 30); // 2025年4月26日周五14:30
+            let testTimeSlots3 = "TR10:00-11:15, F14:00-15:45";
+            let result3 = righttime(testDate3, testTimeSlots3);
+            console.log(`Test Case 3: Expected true, Got ${result3}`);
+
+            // 测试用例 4: 不完整时间格式
+            let testDate4 = new Date(2025, 3, 26, 1, 10); // 2025年4月26日周五1:10
+            let testTimeSlots4 = "F 1:1-09:5";
+            let result4 = righttime(testDate4, testTimeSlots4);
+            console.log(`Test Case 4: Expected true, Got ${result4}`);
+        }
+
+        // 运行测试用例
+        runTests();
+    </script>
+</body>
+
+</html>
