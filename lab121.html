@@ -1,67 +1,56 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <title>太阳系模型</title>
     <style>
-        body { margin: 0; overflow: hidden; background: #000; color: #fff; font-family: Arial, sans-serif; }
-        canvas { display: block; }
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            color: #ea2828;
+            font-family: Arial, sans-serif;
+        }
+
+        canvas {
+            display: block;
+        }
+
         #tableContainer {
             display: none;
             position: absolute;
             top: 50px;
             left: 50px;
-            background: rgba(255, 255, 255, 0.9);
+            background: #eeb8c3;
             padding: 10px;
             border-radius: 5px;
             max-height: 80vh;
             overflow-y: auto;
         }
-        table { border-collapse: collapse; }
-        th, td { padding: 8px; border: 1px solid #ccc; text-align: left; }
-        th { background: #eee; cursor: pointer; }
-        th:hover { background: #ddd; }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #f0a1a8;
+            text-align: left;
+        }
+
+        th {
+            background: #eeb8c3;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background: #eeb8c3;
+        }
     </style>
 </head>
+
 <body>
     <canvas id="solarSystemCanvas"></canvas>
     <div id="tableContainer"></div>
@@ -138,10 +127,10 @@
             const trHead = document.createElement('tr');
             ['name', 'mass', 'orbitRadius', 'color', 'diameter'].forEach(col => {
                 const th = document.createElement('th');
-                th.textContent = col === 'name' ? '名称' : 
-                                 col === 'mass' ? '质量 (kg)' : 
-                                 col === 'orbitRadius' ? '轨道半径 (像素)' : 
-                                 col === 'color' ? '颜色' : '直径 (像素)';
+                th.textContent = col === 'name' ? '名称' :
+                    col === 'mass' ? '质量 (kg)' :
+                        col === 'orbitRadius' ? '轨道半径 (像素)' :
+                            col === 'color' ? '颜色' : '直径 (像素)';
                 th.setAttribute('data-column', col);
                 trHead.appendChild(th);
             });
@@ -162,7 +151,7 @@
             tableContainer.innerHTML = '';
             tableContainer.appendChild(table);
 
-            table.addEventListener('click', function(e) {
+            table.addEventListener('click', function (e) {
                 if (e.target.tagName === 'TH') {
                     const column = e.target.getAttribute('data-column');
                     if (sortColumn === column) {
@@ -199,7 +188,7 @@
             });
         }
 
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const tableContainer = document.getElementById('tableContainer');
             if (tableContainer.contains(e.target)) return;
 
@@ -214,4 +203,5 @@
         });
     </script>
 </body>
+
 </html>
